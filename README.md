@@ -9,7 +9,12 @@ An easy git clone to get started building an app with dependencies.
 ## Installation
 
 git clone repo then at the project root:
+
 `npm install`
+
+then 
+
+`bower install`
 
 ## Tests
 
