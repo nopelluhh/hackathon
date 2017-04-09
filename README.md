@@ -12,10 +12,6 @@ git clone repo then at the project root:
 
 `npm install`
 
-then 
-
-`bower install`
-
 ## Tests
 
 TBD
