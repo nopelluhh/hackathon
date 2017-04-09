@@ -1,41 +1,54 @@
-// modules =================================================
 const express = require('express')
 const app = express()
 require('dotenv').config()
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
+const path = require('path')
+const httpProxy = require('http-proxy')
+const proxy = httpProxy.createProxyServer()
 
-// configuration ===========================================
+// configuration =========================================== set the static
+const isProduction = process.env.NODE_ENV === 'production'
+const port = process.env.PORT || 3000
+// files location
+app.use('/public', express.static(path.join(__dirname, 'public'), {fallthrough: false}))
+// Handle Static File 404
+app.use((err, req, res, next) => {
+  if (err) {
+    console.error
+  }
+  res.sendStatus(404)
+})
 
-// set our port
-var port = process.env.PORT || 8080
+if (!isProduction) {
+  // We require the bundler inside the if block because it is only needed in a
+  // development environment. Later you will see why this is a good idea
+  require('./bundle.js')()
 
-// connect to our mongoDB database 
-// (uncomment after you enter in your own credentials in .env file)
-//mongoose.connect(process.env.DB_URL); 
+  // Any requests to localhost:3000/build is proxied to webpack-dev-server
+  app.all('/public/dist/*', (req, res) => {
+    proxy.web(req, res, {target: 'http://localhost:8080'})
+  })
+}
 
-// get all data/stuff of the body (POST) parameters
-// parse application/json 
+proxy.on('error', e => {
+  console.log('Could not connect to proxy, please try again...')
+})
+
+// mongoose.connect(process.env.DB_URL)
+
 app.use(bodyParser.json())
+app.use(bodyParser.json({type: 'application/vnd.api+json'}))
+app.use(bodyParser.urlencoded({extended: true}))
 
-// parse application/vnd.api+json see jsonapi.org
-app.use(bodyParser.json({ type: 'application/vnd.api+json' }))
-
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }))
-
-// override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
+// simulate PUT/DETELE Method
 app.use(methodOverride('X-HTTP-Method-Override'))
 
-// set the static files location
-app.use(express.static(__dirname + '/public'))
-
-// routes ==================================================
-app.use(require('./app/routes')) // configure our routes
+// configure routes
+app.use(require('./app/routes'))
 
 // start app ===============================================
-// startup our app at http://localhost:8080
 app.listen(port, () => {
-    console.log(`Magic happens on port ${port}`)
+  console.log(`Magic happens on port ${port}`)
 })
