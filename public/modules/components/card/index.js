@@ -1,10 +1,14 @@
 import angular from 'angular'
-import './challenge.scss'
+import './card.scss'
 
 export default angular
-    .module('app.challenge', [])
-    .component('zaChallenge', {
-      template: require('./challengeTemplate.html'),
+    .module('app.card', [])
+    .component('zaCard', {
+      template: require('./cardTemplate.html'),
+      transclude: {
+        title: '?cardTitle',
+        body: 'cardBody'
+      },
       controller: challengeController,
       bindings: {
         challenge: '<',
@@ -29,7 +33,6 @@ function challengeController($sce) {
 
   ctrl.$onInit = function() {
     ctrl.challenge.description = $sce.trustAsHtml(ctrl.challenge.description.replace(/`(.+?)`/g, '<code>$1</code>'))
+    console.log(ctrl.challenge.description)
   }
-  ctrl.onChanges = function(changesObj) {}
-  ctrl.onDestory = function() {}
 }
