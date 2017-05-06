@@ -3,18 +3,49 @@ export default class HomeController {
     this.HomeService = HomeService
     this.pong = 'ping'
     this.tagline = 'Hack the Planet!'
+    this.challenge = {
+      '_id': '590e22069092bd6a7c1ba574',
+      'field': 'javascript',
+      'type': 'text',
+      'difficulty': 5,
+      'name': 'A Small Challenge',
+      'description': 'What does `typeof NaN` evaluate to?',
+      '__v': 0,
+      'options': [{
+        'content': '0',
+        'correct': false
+      },
+      {
+        'content': 'boolean',
+        'correct': false
+      },
+      {
+        'content': 'null',
+        'correct': false
+      },
+      {
+        'content': 'number',
+        'correct': true
+      }
+      ],
+      'answer': 'Phil'
+    }
+  }
+
+  onAnswer(answer) {
+    window.alert(answer.correct)
   }
 
   ping() {
     this
-      .HomeService
-      .ping()
-      .then(data => {
-        this.pong = data
-      })
-      .catch(reason => {
-        console.log(reason)
-      })
+            .HomeService
+            .ping()
+            .then(data => {
+              this.pong = data
+            })
+            .catch(reason => {
+              console.log(reason)
+            })
   }
 }
 
