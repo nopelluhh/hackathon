@@ -36,7 +36,7 @@ proxy.on('error', e => {
   console.log('Could not connect to proxy, please try again...')
 })
 
-// mongoose.connect(process.env.DB_URL)
+mongoose.connect(process.env.DB_URL)
 
 app.use(bodyParser.json())
 app.use(bodyParser.json({type: 'application/vnd.api+json'}))
