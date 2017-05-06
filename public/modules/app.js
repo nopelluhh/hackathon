@@ -5,9 +5,10 @@ import uirouter from 'angular-ui-router'
 
 import home from './home'
 import layout from './layout'
+import components from './components'
 
 angular
-  .module('app', [uirouter, layout, home])
+  .module('app', [uirouter, layout, home, components])
   .config(RouteConfig)
   .run(($rootScope) => {
     $rootScope.$on('$stateChangeError', console.log.bind(console))
