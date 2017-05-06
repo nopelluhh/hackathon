@@ -40,5 +40,7 @@ jspm_packages
 # Bower
 public/libs
 
+public/dist
+
 # Environment
 .env

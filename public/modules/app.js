@@ -1,5 +1,5 @@
 /* https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#application-structure */
-import 'bootstrap/dist/css/bootstrap.css'
+import '../styles/main.scss'
 import angular from 'angular'
 import uirouter from 'angular-ui-router'
 

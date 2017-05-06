@@ -38,6 +38,12 @@ module.exports = (() => {
       ]
     }
 
+  config.resolve = {
+    modules: [
+      path.resolve(__dirname, 'public'),
+      'node_modules'
+    ]
+  }
   config.output = isTest
     ? {}
     : {
@@ -78,11 +84,12 @@ module.exports = (() => {
         },
         exclude: /node_modules/
       }, {
-        test: /\.css$/,
+        test: /\.[s]?css$/,
         use: isTest
           ? 'null-loader'
           : ExtractTextPlugin.extract({
-            fallback: 'style-loader',
+            // fallback: 'style-loader',
+            filename: 'styles/main.css',
             use: [
               {
                 loader: 'css-loader',
@@ -91,6 +98,12 @@ module.exports = (() => {
                 }
               }, {
                 loader: 'postcss-loader'
+              },
+              {
+                loader: 'sass-loader',
+                options: {
+                  includePaths: [path.resolve(__dirname, './node_modules')]
+                }
               }
             ]
           })
@@ -129,7 +142,7 @@ module.exports = (() => {
       .plugins
       .push(new HtmlWebpackPlugin({template: './public/index.html', inject: 'body'}), new ExtractTextPlugin({
         filename: 'css/[name].css',
-        disable: !isProd,
+        // disable: !isProd,
         allChunks: true
       }))
   }
