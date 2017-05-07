@@ -12,6 +12,7 @@
     "test-watch": "karma start --auto-watch --no-single-run",
     "start": "node server"
   },
+  
   "dependencies": {
     "angular": "^1.6.4",
     "angular-sanitize": "^1.6.4",

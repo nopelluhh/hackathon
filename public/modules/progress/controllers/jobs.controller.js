@@ -6,6 +6,8 @@ export default class JobController {
       subscribed: false,
       contacted: false
     }
+
+    if (!$state.params.job) return
     this.$sce = $sce
     this.skills = $state.params.job.required
     this.job = $state.params.job
@@ -14,6 +16,7 @@ export default class JobController {
     this.tagline = 'Hack the Planet!'
     this.activate()
     this.onAnswer = this.onAnswer.bind(this)
+    this.phoneSubmit = this.phoneSubmit.bind(this)
   }
 
   activate() {
@@ -29,6 +32,14 @@ export default class JobController {
     if (answer.correct) {
       this.status.challenges++
     }
+  }
+
+  phoneSubmit() {
+    this.status.subscribed = true
+  }
+
+  emailSubmit() {
+    this.emailBody = 'Thanks, we\'ll get back to you soon!'
   }
 }
 

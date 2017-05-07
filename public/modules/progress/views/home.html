@@ -1,44 +1,36 @@
 <div class="jumbotron text-center">
-    <h1>Helping you get hired.</h1>
+    <h3>Phil is here to help!</h3>
 </div>
+<div class="flex-rows" ng-if="$ctrl.job">
+    <za-card class="col-md-4 col-xs-12 flex">
+        <card-title>Challenges</card-title>
+        <card-body>The result of these challenges could help improve your chances with {{$ctrl.job.company}}</card-body>
+    </za-card>
 
-<div class="flex-rows">
-    <za-challenge challenges="$ctrl.challenges" on-answer="$ctrl.onAnswer" class="col-md-4 col-xs-12"></za-challenge>
     <za-card class="col-md-8 col-xs-12 flex">
         <card-title>Here's where you're at with {{$ctrl.job.company}}</card-title>
         <card-body>
             <ul class="list-style">
-            <li><strong>Successful Challenges:</strong> {{$ctrl.status.challenges}}</li>
-            <li><strong>Receiving Reminders:</strong> {{$ctrl.status.subscribed? 'Yep!' : 'Not yet'}}</li>
-            <li><strong>Reached out:</strong> {{$ctrl.status.contacted? 'Yep!' : 'Not yet'}}</li>
+                <li><strong>Successful Challenges:</strong> {{$ctrl.status.challenges}}</li>
+                <li><strong>Receiving Reminders:</strong> {{$ctrl.status.subscribed? 'Yep!' : 'Not yet'}}</li>
+                <li><strong>Reached out:</strong> {{$ctrl.status.contacted? 'Yep!' : 'Not yet'}}</li>
             </ul>
-            
-
         </card-body>
     </za-card>
-    <za-card class="col-md-3 col-xs-12 flex">
-        <card-title>Want a reminder to follow up?</card-title>
-        <card-body>We got your back!</card-body>
-    </za-card>
-    <za-card class="col-md-9 col-xs-12 flex">
-        <card-title>Challenges</card-title>
-        <card-body>The more challenges you do, the better you'll look to your prospective employer!</card-body>
-    </za-card>
-    <za-card class="col-md-6 col-xs-12 flex">
-        <card-title>Hey</card-title>
-        <card-body>Now</card-body>
+    <za-challenge challenges="$ctrl.challenges" on-answer="$ctrl.onAnswer" class="col-md-4 col-xs-12"></za-challenge>
+    <za-card class="col-md-8 col-xs-12 flex">
+        <card-title>Contact {{$ctrl.job.company}}</card-title>
+        <card-body>
+            <p class="h5 text-center">Your contact with {{$ctrl.job.company}} is {{$ctrl.job.contact}}. Send them a message from right here!</p>
+            <textarea class="form-control" rows="3" ng-model="$ctrl.emailBody"></textarea>
+            <br>
+            <button class="btn btn-default" ng-click="$ctrl.emailSubmit()">Send!</button>
+        </card-body>
     </za-card>
     <za-card class="col-md-6 col-xs-12 flex">
-        <card-title>Hey</card-title>
-        <card-body>Now</card-body>
+        <card-title>Want a reminder? Give us your number!</card-title>
+        <card-body>
+            <za-contact on-submit="$ctrl.phoneSubmit"></za-contact>
+        </card-body>
     </za-card>
 </div>
-
-<form name="submitNumberForm" class="form-horizontal">
-    <div >
-        <label>
-            <input type="text" name="submitNumber" id="submitNumber">
-            <button id="sumbitNumberBtn" ng-submit="HomeCtrl.submitNumber"
-        </label>
-    </div>
-</form>

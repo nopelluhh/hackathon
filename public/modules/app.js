@@ -13,11 +13,17 @@ import services from './services'
 import 'angular-sanitize'
 
 angular
-  .module('app', [uirouter, home, layout, progress, components, jobs, services, 'ngSanitize'])
-  .config(RouteConfig)
-  .run(($rootScope) => {
-    $rootScope.$on('$stateChangeError', console.log.bind(console))
-  })
+    .module('app', [uirouter, home, layout, progress, components, jobs, services, 'ngSanitize'])
+    .config(RouteConfig)
+    .config(['$httpProvider', function($httpProvider) {
+      $httpProvider.defaults.headers.common = {}
+      $httpProvider.defaults.headers.post = {}
+      $httpProvider.defaults.headers.put = {}
+      $httpProvider.defaults.headers.patch = {}
+    }])
+    .run(($rootScope) => {
+      $rootScope.$on('$stateChangeError', console.log.bind(console))
+    })
 
 RouteConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider']
 

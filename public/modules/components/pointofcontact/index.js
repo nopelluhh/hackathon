@@ -2,36 +2,26 @@ import angular from 'angular'
 
 export default angular
     .module('app.pointofcontact', [])
-    .component('zaPointOfContact', {
+    .component('zaContact', {
       template: require('./pointOfContactTemplate.html'),
-      transclude: {
-        title: '?cardTitle',
-        body: 'cardBody'
-      },
-      controller: challengeController,
+      controller: contactController,
       bindings: {
-        challenge: '<',
-        onAnswer: '<'
+        onSubmit: '<'
       }
     })
     .name
 
-function challengeController($sce) {
+function contactController($http) {
   var ctrl = this
-
-  ctrl.onSubmit = function(choice) {
-    if (ctrl.challenge.type === 'text') {
-      ctrl.onAnswer({
-        content: choice,
-        correct: choice === ctrl.challenge.answer
-      })
-    } else {
-      ctrl.onAnswer(choice)
+  this.submitPhone = function(number) {
+    var headers = new Headers()
+    headers.append('Content-Type', 'application/json')
+    var options = {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({number: number})
     }
-  }
-
-  ctrl.$onInit = function() {
-    ctrl.challenge.description = $sce.trustAsHtml(ctrl.challenge.description.replace(/`(.+?)`/g, '<code>$1</code>'))
-    console.log(ctrl.challenge.description)
+    ctrl.phoneNumber = 'Thanks!'
+    this.onSubmit(true)
   }
 }
