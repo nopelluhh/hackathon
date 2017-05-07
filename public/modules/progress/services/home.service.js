@@ -6,7 +6,7 @@ export default class HomeService {
   ping() {
     return this
       .$http
-      .get('/api/ping')
+      .get('/api/jobs')
       .then(this.xhrSuccess)
       .catch(this.onError)
   }

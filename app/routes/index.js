@@ -8,7 +8,7 @@ router.get('/api/ping', exampleController.ping)
 // frontend routes =========================================================
 // route to handle all angular requests
 router.get('*', (req, res) => {
-  res.sendfile('./public/index.html')
+  res.sendfile('./public/dist/index.html')
 })
 
 module.exports = router

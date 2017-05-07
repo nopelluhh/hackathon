@@ -71,7 +71,7 @@ module.exports = (() => {
   } else if (isProd) {
     config.devtool = 'source-map'
   } else {
-    config.devtool = 'eval-source-map'
+    // config.devtool = 'eval-source-map'
   }
 
   config.module = {

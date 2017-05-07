@@ -35,18 +35,6 @@ export default class HomeController {
   onAnswer(answer) {
     window.alert(answer.correct)
   }
-
-  ping() {
-    this
-            .HomeService
-            .ping()
-            .then(data => {
-              this.pong = data
-            })
-            .catch(reason => {
-              console.log(reason)
-            })
-  }
 }
 
 HomeController.$inject = ['HomeService']
