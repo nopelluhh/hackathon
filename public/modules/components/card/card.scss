@@ -1,7 +1,30 @@
 .za-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     background-color: #fff;
+    &__heading {
+        background-color: white !important;
+    }
+
+
+    &__body {
+        min-height: 250px;
+    }
 }
 
-.za-heading {
-    background-color: white !important;
+.flex {
+    display: flex;
+}
+
+
+.mh-300 {
+    height: 300px;
+}
+
+.flex-rows {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-between;
 }
