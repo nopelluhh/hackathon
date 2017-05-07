@@ -31,9 +31,12 @@ export default class HomeController {
       'answer': 'Phil'
     }
   }
-
   onAnswer(answer) {
     window.alert(answer.correct)
+  }
+  // the submitnumber function called when user clicks 'send' on submitting cell # in form
+  submitNumber(number) {
+    // HomeService.submitNumber()
   }
 }
 

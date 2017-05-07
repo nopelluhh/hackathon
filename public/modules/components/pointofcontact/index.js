@@ -1,13 +1,12 @@
 import angular from 'angular'
-import './pointofcontact.scss'
 
 export default angular
     .module('app.pointofcontact', [])
     .component('zaPointOfContact', {
       template: require('./pointOfContactTemplate.html'),
       transclude: {
-        title: '?pointOfContactTitle',
-        body: 'pointOfContactBody'
+        title: '?cardTitle',
+        body: 'cardBody'
       },
       controller: challengeController,
       bindings: {
