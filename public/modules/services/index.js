@@ -1,12 +1,15 @@
-export default class HomeService {
+import angular from 'angular'
+
+class fetcher {
   constructor($http) {
     this.$http = $http
+    this.prefix = '/api/'
   }
 
-  ping() {
+  get(resource, params) {
     return this
       .$http
-      .get('/api/jobs')
+      .get(this.prefix + resource)
       .then(this.xhrSuccess)
       .catch(this.onError)
   }
@@ -22,6 +25,7 @@ export default class HomeService {
   submitSuccess(number) {
     return number.data
   }
+
   xhrSuccess(response) {
     return response.data
   }
@@ -31,4 +35,8 @@ export default class HomeService {
   }
 }
 
-HomeService.$inject = ['$http']
+fetcher.$inject = ['$http']
+
+export default angular.module('app.services', [])
+.service('fetcher', fetcher)
+.name

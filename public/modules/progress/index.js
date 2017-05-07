@@ -1,12 +1,13 @@
 import angular from 'angular'
 import uirouter from 'angular-ui-router'
 import routes from './routes'
-import HomeController from './controllers/home.controller'
-import HomeService from './services/home.service'
+import JobsController from './controllers/jobs.controller'
+import services from '../services'
+
+console.log(JobsController)
 
 export default angular
-  .module('app.home', [uirouter])
-  .controller('HomeController', HomeController)
-  .service('HomeService', HomeService)
+  .module('app.progress', [uirouter, services])
+  .controller('ProgressController', JobsController)
   .config(routes)
   .name

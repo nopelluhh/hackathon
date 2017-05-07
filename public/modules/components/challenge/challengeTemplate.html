@@ -1,23 +1,42 @@
 <div class="challenge panel">
     <span class="challenge__title panel-heading">{{$ctrl.challenge.name}}</span>
     <div class="challenge__body panel-body">
-        <p class="challenge__description" ng-bind-html="$ctrl.challenge.description"></p>
-        <div class="question__block">
-            <form name="challengeForm" class="form-horizontal">
-                <div ng-repeat="option in $ctrl.challenge.options" class="radio" ng-if="$ctrl.challenge.type === 'radio'">
-                    <label>
+        <div id="challenge__slider" class="challenge__slider">
+            <div class="slider__block">
+                <div ng-if="$ctrl.challenges.length" class="center-block">
+                    <p>Sorry, not quite. Try another one?</p>
+                    <button class="btn btn-default" ng-click="$ctrl.newQuestion()">Sure!</button>
+                </div>
+                <div ng-if="!$ctrl.challenges.length">Sorry, no more questions!</div>
+            </div>
+            <div class="slider__block">
+                <p class="challenge__description" ng-bind-html="$ctrl.challenge.description"></p>
+                <div class="question__block">
+                    <form name="challengeForm" class="form-horizontal">
+                        <div ng-repeat="option in $ctrl.challenge.options" class="radio" ng-if="$ctrl.challenge.type === 'multi'">
+                            <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" ng-model="$ctrl.choice" ng-value="option"/>
                         {{option.content}}
                     </label>
+                        </div>
+                        <div class="form-group" ng-if="$ctrl.challenge.type === 'text'">
+                            <label for="inputPassword3" class="col-sm-3 control-label">Answer</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputPassword3" ng-model="$ctrl.choice" placeholder="What would Phil do?">
+                            </div>
+                        </div>
+                        <span class="text-success pull-left" ng-if="$ctrl.correct">You got it!</span>
+                        <button class="btn btn-default pull-right" ng-click="$ctrl.choice && $ctrl.onSubmit($ctrl.choice)">Submit</button>
+                    </form>
                 </div>
-                <div class="form-group" ng-if="$ctrl.challenge.type === 'text'">
-                    <label for="inputPassword3" class="col-sm-3 control-label">Answer</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputPassword3" ng-model="$ctrl.choice" placeholder="What would Phil do?">
-                    </div>
+            </div>
+            <div class="slider__block">
+                <div ng-if="$ctrl.challenges.length" class="center-block">
+                    <p>Great Job! Another one?</p>
+                    <button class="btn btn-default" ng-click="$ctrl.newQuestion()">Sure!</button>
                 </div>
-                <button class="btn btn-default pull-right" ng-click="$ctrl.choice && $ctrl.onSubmit($ctrl.choice)">Submit</button>
-            </form>
+                <div ng-if="!$ctrl.challenges.length" class="center-block">Sorry, no more questions!</div>
+            </div>
 
         </div>
     </div>

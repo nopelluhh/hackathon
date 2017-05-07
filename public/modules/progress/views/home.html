@@ -2,31 +2,36 @@
     <h1>Helping you get hired.</h1>
 </div>
 
-<za-challenge challenge="HomeCtrl.challenge" on-answer="HomeCtrl.onAnswer"></za-challenge>
-<div class="row">
-<za-pointofcontact class="col-md-6">
-    <card-title>YO</card-title>
-    <card-body>Wassup</card-body>
-</za-pointofcontact>
-</div>
+<div class="flex-rows">
+    <za-challenge challenges="$ctrl.challenges" on-answer="$ctrl.onAnswer" class="col-md-4 col-xs-12"></za-challenge>
+    <za-card class="col-md-8 col-xs-12 flex">
+        <card-title>Here's where you're at with {{$ctrl.job.company}}</card-title>
+        <card-body>
+            <ul class="list-style">
+            <li><strong>Successful Challenges:</strong> {{$ctrl.status.challenges}}</li>
+            <li><strong>Receiving Reminders:</strong> {{$ctrl.status.subscribed? 'Yep!' : 'Not yet'}}</li>
+            <li><strong>Reached out:</strong> {{$ctrl.status.contacted? 'Yep!' : 'Not yet'}}</li>
+            </ul>
+            
 
-<div class="row">
-<za-card class="col-md-3">
-    <card-title>Want a reminder to follow up?</card-title>
-    <card-body>We got your back!</card-body>
-</za-card>
-<za-card class="col-md-9">
-    <card-title>Challenges</card-title>
-    <card-body>The more challenges you do, the better you'll look to your prospective employer!</card-body>
-</za-card>
-<za-card class="col-md-6">
-    <card-title>Hey</card-title>
-    <card-body>Now</card-body>
-</za-card>
-<za-card class="col-md-6">
-    <card-title>Hey</card-title>
-    <card-body>Now</card-body>
-</za-card>
+        </card-body>
+    </za-card>
+    <za-card class="col-md-3 col-xs-12 flex">
+        <card-title>Want a reminder to follow up?</card-title>
+        <card-body>We got your back!</card-body>
+    </za-card>
+    <za-card class="col-md-9 col-xs-12 flex">
+        <card-title>Challenges</card-title>
+        <card-body>The more challenges you do, the better you'll look to your prospective employer!</card-body>
+    </za-card>
+    <za-card class="col-md-6 col-xs-12 flex">
+        <card-title>Hey</card-title>
+        <card-body>Now</card-body>
+    </za-card>
+    <za-card class="col-md-6 col-xs-12 flex">
+        <card-title>Hey</card-title>
+        <card-body>Now</card-body>
+    </za-card>
 </div>
 
 <form name="submitNumberForm" class="form-horizontal">

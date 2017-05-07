@@ -7,29 +7,44 @@ export default angular
       template: require('./challengeTemplate.html'),
       controller: challengeController,
       bindings: {
-        challenge: '<',
+        challenges: '<',
         onAnswer: '<'
       }
     })
     .name
 
-function challengeController($sce) {
+function challengeController($sanitize, $element) {
   var ctrl = this
-
+  var slider = document.getElementById('challenge__slider')
   ctrl.onSubmit = function(choice) {
+    let correct, data
     if (ctrl.challenge.type === 'text') {
-      ctrl.onAnswer({
+      correct = choice === ctrl.challenge.answer
+      data = {
         content: choice,
-        correct: choice === ctrl.challenge.answer
-      })
+        correct: correct
+      }
     } else {
-      ctrl.onAnswer(choice)
+      data = choice
+      correct = choice.correct
+    }
+
+    if (correct) { slider.style.transform = 'translate(-67%, 0)' } else { slider.style.transform = 'translate(0, 0)' }
+    this.onAnswer(data)
+  }
+
+  // ctrl.$onInit = function() {
+  //   this.challenge = this.challenges.shift()
+  // }
+
+  ctrl.$onChanges = function(changesObj) {
+    if (changesObj.challenges.currentValue && !this.challenge) {
+      this.challenge = changesObj.challenges.currentValue.shift()
     }
   }
 
-  ctrl.$onInit = function() {
-    if (ctrl.challenge) ctrl.challenge.description = $sce.trustAsHtml(ctrl.challenge.description.replace(/`(.+?)`/g, '<code>$1</code>'))
+  ctrl.newQuestion = function() {
+    this.challenge = this.challenges.shift()
+    slider.style.transform = 'translate(-33%, 0)'
   }
-  ctrl.onChanges = function(changesObj) {}
-  ctrl.onDestory = function() {}
 }
