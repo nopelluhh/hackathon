@@ -16,7 +16,6 @@ export default angular
 function challengeController($sanitize, $element) {
   var ctrl = this
   var slider = document.getElementById('challenge__slider')
-  console.log(slider)
   ctrl.onSubmit = function(choice) {
     let correct, data
     if (ctrl.challenge.type === 'text') {

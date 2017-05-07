@@ -4,14 +4,14 @@
 
 
 <div class="flex-rows">
-    <za-challenge challenges="HomeCtrl.challenges" on-answer="HomeCtrl.onAnswer" class="col-md-4 col-xs-12"></za-challenge>
+    <za-challenge challenges="$ctrl.challenges" on-answer="$ctrl.onAnswer" class="col-md-4 col-xs-12"></za-challenge>
     <za-card class="col-md-8 col-xs-12 flex">
-        <card-title>Here's where you're at with {{HomeCtrl.job.company}}</card-title>
+        <card-title>Here's where you're at with {{$ctrl.job.company}}</card-title>
         <card-body>
             <ul class="list-style">
-            <li><strong>Successful Challenges:</strong> {{HomeCtrl.status.challenges}}</li>
-            <li><strong>Receiving Reminders:</strong> {{HomeCtrl.status.subscribed? 'Yep!' : 'Not yet'}}</li>
-            <li><strong>Reached out:</strong> {{HomeCtrl.status.contacted? 'Yep!' : 'Not yet'}}</li>
+            <li><strong>Successful Challenges:</strong> {{$ctrl.status.challenges}}</li>
+            <li><strong>Receiving Reminders:</strong> {{$ctrl.status.subscribed? 'Yep!' : 'Not yet'}}</li>
+            <li><strong>Reached out:</strong> {{$ctrl.status.contacted? 'Yep!' : 'Not yet'}}</li>
             </ul>
             
 

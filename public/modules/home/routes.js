@@ -1,16 +1,16 @@
 routes.$inject = ['$stateProvider']
 
 export default function routes($stateProvider) {
-  $stateProvider.state('app.progress', {
-    url: '/jobs/:url',
+  $stateProvider.state('app.home', {
+    url: '/',
     params: {
       job: null
     },
     views: {
       'content@app': {
         template: require('./views/home.html'),
-        controller: 'ProgressController',
-        controllerAs: '$ctrl'
+        controller: 'HomeController',
+        controllerAs: 'HomeCtrl'
       }
     }
   })

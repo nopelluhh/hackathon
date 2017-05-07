@@ -1,5 +1,5 @@
-export default class HomeController {
-  constructor(HomeService, fetcher, $state, $sce) {
+export default class JobController {
+  constructor(fetcher, $state, $sce) {
     this.fetcher = fetcher
     this.status = {
       challenges: 0,
@@ -10,7 +10,6 @@ export default class HomeController {
     this.skills = $state.params.job.required
     this.job = $state.params.job
     this.plus = $state.params.job.nicetohaves
-    this.HomeService = HomeService
     this.pong = 'ping'
     this.tagline = 'Hack the Planet!'
     this.activate()
@@ -33,4 +32,4 @@ export default class HomeController {
   }
 }
 
-HomeController.$inject = ['HomeService', 'fetcher', '$state', '$sce']
+JobController.$inject = ['fetcher', '$state', '$sce']
