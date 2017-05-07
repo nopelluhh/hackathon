@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "cff2eb23eb84961fee51"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c4a37ff415133caecbaa"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -45662,7 +45662,7 @@ exports.encode = exports.stringify = __webpack_require__(72);
 /* 74 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"panel panel-default za-card\">\n    <div class=\"panel-heading za-heading\" ng-transclude=\"title\"></div>\n    <div class=\"panel-body\" ng-transclude=\"body\"></div>\n</div>"
+module.exports = "<div class=\"panel panel-default za-card\">\n    <div class=\"panel-heading za-card__heading\" ng-transclude=\"title\"></div>\n    <div class=\"panel-body\" ng-transclude=\"body\"></div>\n</div>"
 
 /***/ }),
 /* 75 */
