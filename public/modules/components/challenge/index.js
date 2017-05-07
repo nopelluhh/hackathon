@@ -28,7 +28,7 @@ function challengeController($sce) {
   }
 
   ctrl.$onInit = function() {
-    ctrl.challenge.description = $sce.trustAsHtml(ctrl.challenge.description.replace(/`(.+?)`/g, '<code>$1</code>'))
+    if (ctrl.challenge) ctrl.challenge.description = $sce.trustAsHtml(ctrl.challenge.description.replace(/`(.+?)`/g, '<code>$1</code>'))
   }
   ctrl.onChanges = function(changesObj) {}
   ctrl.onDestory = function() {}
