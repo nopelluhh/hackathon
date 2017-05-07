@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="text-center h2 col-md-12">Your Jobs:</div>
+        <za-card ng-repeat="job in $ctrl.jobs" class="col-md-12">
+            <card-title><em class="h3 text-primary">{{job.title}}</em><a class="pull-right small lead" ng-href={{job.link}}>Link</a></card-title>
+            <card-body>
+                <ul>
+                    <li><strong>Type:</strong> {{job.type}}</li>
+                    <li><strong>Location:</strong> {{job.location}}</li>
+                    <li><strong>Company: </strong> {{job.company}}</li>
+                    <li> <strong>Benefits:</strong>
+                        <ul>
+                            <li ng-repeat="benefit in job.benefits">
+                                {{benefit}}
+                            </li>
+                        </ul>
+                    </li>
+                    <li> <strong>Required:</strong>
+                        <ul>
+                            <li ng-repeat="req in job.required">
+                                {{req}}
+                            </li>
+                        </ul>
+                    </li>
+                    <li> <strong>Nice-to-have:</strong>
+                        <ul>
+                            <li ng-repeat="nice in job.nicetohaves">
+                                {{nice}}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <a ui-sref='app.progress({job: job, url: job.url})'>View Status</a>
+            </card-body>
+        </za-card>
+    </div>
+</div>
