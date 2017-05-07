@@ -14,6 +14,18 @@ class fetcher {
       .catch(this.onError)
   }
 
+  submitNumber() {
+    return this
+    .$http
+    .post('api/userupload')
+    .then(this.submitSuccess)
+    .catch(this.onError)
+  }
+
+  submitSuccess(number) {
+    return number.data
+  }
+
   xhrSuccess(response) {
     return response.data
   }
