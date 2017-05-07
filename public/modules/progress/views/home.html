@@ -4,11 +4,11 @@
 <div class="flex-rows" ng-if="$ctrl.job">
     <za-card class="col-md-4 col-xs-12 flex">
         <card-title>Challenges</card-title>
-        <card-body>The result of these challenges could help improve your chances with {{$ctrl.job.company}}</card-body>
+        <card-body>The result of these challenges could help improve your chances with <strong>{{$ctrl.job.company}}</strong></card-body>
     </za-card>
 
     <za-card class="col-md-8 col-xs-12 flex">
-        <card-title>Here's where you're at with {{$ctrl.job.company}}</card-title>
+        <card-title>Here's where you're at with <strong>{{$ctrl.job.company}}</strong></card-title>
         <card-body>
             <ul class="list-style">
                 <li><strong>Successful Challenges:</strong> {{$ctrl.status.challenges}}</li>
@@ -21,7 +21,7 @@
     <za-card class="col-md-8 col-xs-12 flex">
         <card-title>Contact {{$ctrl.job.company}}</card-title>
         <card-body>
-            <p class="h5 text-center">Your contact with {{$ctrl.job.company}} is {{$ctrl.job.contact}}. Send them a message from right here!</p>
+            <p class="text-center">Your contact with <strong>{{$ctrl.job.company}}</strong> is <strong>{{$ctrl.job.contact}}</strong>. Send them a message from right here!</p>
             <textarea class="form-control" rows="3" ng-model="$ctrl.emailBody"></textarea>
             <br>
             <button class="btn btn-default" ng-click="$ctrl.emailSubmit()">Send!</button>

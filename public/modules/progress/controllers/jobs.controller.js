@@ -40,6 +40,7 @@ export default class JobController {
 
   emailSubmit() {
     this.emailBody = 'Thanks, we\'ll get back to you soon!'
+    this.status.contacted = true
   }
 }
 
