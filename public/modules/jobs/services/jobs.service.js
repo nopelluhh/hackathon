@@ -6,7 +6,7 @@ export default class JobsService {
   getCurrent() {
     return this
       .$http
-      .get('http://zipbuddy.herokuapp.com/api/zipdata')
+      .get('https://zipbuddy.herokuapp.com/api/zipdata')
       .then(this.xhrSuccess)
       .catch(this.onError)
   }

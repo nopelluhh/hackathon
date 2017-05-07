@@ -39444,7 +39444,7 @@ var JobsService = function () {
   _createClass(JobsService, [{
     key: 'getCurrent',
     value: function getCurrent() {
-      return this.$http.get('http://zipbuddy.herokuapp.com/api/zipdata').then(this.xhrSuccess).catch(this.onError);
+      return this.$http.get('https://zipbuddy.herokuapp.com/api/zipdata').then(this.xhrSuccess).catch(this.onError);
     }
   }, {
     key: 'xhrSuccess',
