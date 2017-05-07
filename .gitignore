@@ -40,7 +40,8 @@ jspm_packages
 # Bower
 public/libs
 
-public/dist
+public/dist/*.json
+public/dist/*hot-update.js
 
 # Environment
 .env
